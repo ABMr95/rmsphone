@@ -1,23 +1,34 @@
 import React from 'react';
+import Login from './Login'
+import Register from './Register'
+import Meal from './Meal'
+import {StackNavigator} from 'react-navigation'
 import { StyleSheet, Text, View } from 'react-native';
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      <RootStack />
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+
+const RootStack = StackNavigator(
+  {
+    Login: { screen: Login, },
+    Register: { screen: Register, },
+    Meal: { screen: Meal, }
   },
-});
+  {
+    initialRouteName: 'Login',
+    // navigationOptions: {
+    //   headerStyle: { backgroundColor: '#FFC100' },
+    //   headerTintColor: 'blue',
+    //   headerTitleStyle: {
+    //     fontWeight: 'bold',
+    //     fontSize: 30
+    //   }
+    // }
+  }
+);
